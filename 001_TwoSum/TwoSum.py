@@ -8,6 +8,7 @@ class Solution:
                 return [dic[num], index]
             dic[target - num] = index
 
+
 if __name__ == "__main__":
     nums = [2, 7, 11, 15]
     target = 9
