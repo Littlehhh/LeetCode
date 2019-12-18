@@ -9,12 +9,13 @@ public:
         std::unordered_set<char> WordSet;
         size_t ans = 0;
         auto substring_start = s.begin();
-        for(auto substring_end = s.begin(); substring_end != s.end(); ++substring_end){           
-            while( WordSet.find(*substring_end) != WordSet.end() ){
+        // range-based for way
+        for(auto && character: s){           
+            while( WordSet.find(character) != WordSet.end() ){
                 WordSet.erase(*substring_start);
                 substring_start++;
             }
-            WordSet.insert(*substring_end);
+            WordSet.insert(character);
             ans = std::max(ans, WordSet.size());
         }
         return ans;
