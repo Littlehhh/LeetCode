@@ -27,16 +27,15 @@ public:
 class Solution {
 public:  
    int lengthOfLongestSubstring(string s) {
-        int  size,i=0,j,k,max=0;
+        std::size_t size,begin=0,end,repeated,max=0;
         size = s.size();
-        for(j = 0;j<size;j++){
-            for(k = i;k<j;k++)
-                if(s[k]==s[j]){
-                    i = k+1;
+        for(end = 0;end<size;end++){
+            for(repeated = begin;repeated<end;repeated++)
+                if(s[repeated]==s[end]){
+                    begin = repeated+1;
                     break;
                 }
-            if(j-i+1 > max)
-                max = j-i+1;
+            max = std::max(max, end-begin+1);
         }
         return max;
     }
