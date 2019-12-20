@@ -5,10 +5,11 @@
             "label": "clang++ build active file",
             "command": "/usr/bin/clang++",
             "args": [
-                "-g",
+                "-std=c++11",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}.out",
+                "--debug"
             ],
             "options": {
                 "cwd": "/usr/bin"

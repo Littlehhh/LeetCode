@@ -1,3 +1,4 @@
+#include<iostream>
 #include<vector>
 // 二分法查找 复杂度 O(log(m+n))  二分查找value 这个查找 pos
 // 长度分别为 m, n 的数组 寻找第 k 个数
@@ -27,42 +28,49 @@ public:
         size_t first = 0, last = m; //二分较短的那个
         // 分割在右边
         size_t median = (m+n+1)/2;
-        //size_t median_right = (m+n+2)/2;
-        while(first < last){
+        while(first <= last){
             size_t mid = first + (last - first) / 2;
-            if( max(nums1[mid - 1], nums2[median - mid - 1]) > 
-                min(nums1[mid], nums2[median - mid])){
-                
-            }
             if(mid != 0 && nums1[mid - 1] > nums2[median - mid]  )
                 last = mid;
             else
-            if(nums1[mid] < nums2[median - mid] && mid != m)
+            if(mid != m && nums1[mid] < nums2[median - mid-1])
                 first = mid+1;
             else{
                 size_t MaxLeft, MinRight;
-                if(mid == 0 || mid == m){
-                    MaxLeft = nums2[median - mid - 1];
-                    MinRight = nums2[median - mid];
+                if(mid == 0){
+                    MaxLeft = std::max(nums1[mid], nums2[median - mid - 1]);
+                    MinRight = std::min(nums1[mid], nums2[median - mid]);
+                }else if(mid == m){
+                    MaxLeft = std::max(nums1[mid-1], nums2[median - mid - 1]);
+                    MinRight = std::min(nums1[mid-1], nums2[median - mid]);
                 }
                 else{
                     MaxLeft = std::max(nums1[mid - 1], nums2[median - mid - 1]);
                     MinRight = std::min(nums1[mid], nums2[median - mid]);
                 }
-
-                if((m+n) % 2 == 1) return MaxLeft;
-                else return (MaxLeft+MinRight) / 2.0;
+                
+                
+                if((m+n) % 2 == 1) {
+                    cout << MaxLeft << endl;
+                    return MaxLeft;
+                }
+                else {
+                    cout << (MaxLeft+MinRight) / 2.0 << endl;
+                    return (MaxLeft+MinRight) / 2.0;
+                }
             }
         }
-        
+        cout << "Done";
         return 0.0;
         
     }
 };
 
 int main(int argc, char **argv){
-    vector<int> nums1 = {1,3};
-    vector<int> nums2 = {2};
+    vector<int> nums1 = {2};
+    vector<int> nums2 = {1,3};
     Solution s = Solution();
     s.findMedianSortedArrays(nums1, nums2);
 }
+
+

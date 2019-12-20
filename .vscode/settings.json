@@ -70,6 +70,7 @@
         "utility": "cpp",
         "bit": "cpp",
         "*.tcc": "cpp",
-        "memory_resource": "cpp"
+        "memory_resource": "cpp",
+        "iostream": "cpp"
     }
 }
