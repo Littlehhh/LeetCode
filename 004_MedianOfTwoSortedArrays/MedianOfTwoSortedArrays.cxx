@@ -17,6 +17,20 @@
 // if L2 > R1 first = mid -> {1}[first,last) = {full} <=> first = last 
 //
 
+static int speedup = [](){
+    ios_base::sync_with_stdio(false);
+    std::cin.tie(0);
+    return 0;
+}();
+
+static const auto io_sync_off = []()
+{
+    // turn off sync
+    std::ios::sync_with_stdio(false);
+    // untie in/out streams
+    std::cin.tie(nullptr);
+    return nullptr;
+}();
 
 using namespace std;
 
@@ -24,32 +38,41 @@ class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         size_t m = nums1.size(), n = nums2.size();
+        cout << m << endl;
         if(m > n) return findMedianSortedArrays(nums2, nums1);
         size_t first = 0, last = m; //二分较短的那个
-        // 分割在右边
         size_t median = (m+n+1)/2;
         while(first <= last){
             size_t mid = first + (last - first) / 2;
-            if(mid != 0 && nums1[mid - 1] > nums2[median - mid]  )
+            size_t remain = median - mid;
+            if(mid != 0 && nums1[mid - 1] > nums2[remain]  )
                 last = mid;
             else
-            if(mid != m && nums1[mid] < nums2[median - mid-1])
+            if(mid != m && nums1[mid] < nums2[remain-1])
                 first = mid+1;
             else{
                 size_t MaxLeft, MinRight;
                 if(mid == 0){
-                    MaxLeft = std::max(nums1[mid], nums2[median - mid - 1]);
-                    MinRight = std::min(nums1[mid], nums2[median - mid]);
-                }else if(mid == m){
-                    MaxLeft = std::max(nums1[mid-1], nums2[median - mid - 1]);
-                    MinRight = std::min(nums1[mid-1], nums2[median - mid]);
+                    MaxLeft = nums2[remain-1];
+                }
+                else if(remain == 0){
+                    MaxLeft = nums1[mid-1];
                 }
                 else{
-                    MaxLeft = std::max(nums1[mid - 1], nums2[median - mid - 1]);
-                    MinRight = std::min(nums1[mid], nums2[median - mid]);
+                    MaxLeft = std::max(nums1[mid-1], nums2[remain-1]);
+                }
+                if(mid == m){
+                    MinRight = nums2[remain];
+                }
+                else
+                if(remain == n){
+                    MinRight = nums1[mid];
+                }
+                else{
+                    MinRight = std::min(nums1[mid], nums2[remain]);
                 }
                 
-                
+
                 if((m+n) % 2 == 1) {
                     cout << MaxLeft << endl;
                     return MaxLeft;
@@ -67,8 +90,8 @@ public:
 };
 
 int main(int argc, char **argv){
-    vector<int> nums1 = {2};
-    vector<int> nums2 = {1,3};
+    vector<int> nums1;
+    vector<int> nums2 = {1};
     Solution s = Solution();
     s.findMedianSortedArrays(nums1, nums2);
 }
