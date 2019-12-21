@@ -95,8 +95,9 @@ public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         size_t m = nums1.size(), n = nums2.size();
         cout << m << endl;
+        // ensure binary search the shorter one
         if(m > n) return findMedianSortedArrays(nums2, nums1);
-        size_t first = 0, last = m; //二分较短的那个
+        size_t first = 0, last = m;
         size_t k = (m+n+1)/2;
         size_t mid, remain;
         while(first < last){
@@ -107,15 +108,16 @@ public:
             else 
                 last = mid;
         }
+        
         mid = first + (last - first) / 2;   
         remain = k - mid;
-        int c1, c2;
-        c1 = max(mid<=0? INT_MAX : nums1[mid-1],
-                 remain<=0?INT_MIN:nums2[remain-1]);
-        if( (m+n)&1) return c1;
-        c2=min( mid>=? INT_MAX : nums1[m1],
-                remain>=n2? INT_MAX : nums2[m2])
-        return 0.0;
+        int MaxLeft, MinRight;
+        MaxLeft = max(mid<=0?    INT_MIN : nums1[mid-1],
+                      remain<=0? INT_MIN : nums2[remain-1]);
+        if( (m+n)&1) return MaxLeft;
+        MinRight = min(mid>=m?    INT_MAX : nums1[mid],
+                       remain>=n? INT_MAX : nums2[remain]);
+        return (MaxLeft+MinRight) * 0.5;
         
     }
 };
