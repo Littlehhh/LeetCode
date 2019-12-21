@@ -89,6 +89,39 @@ public:
     }
 };
 
+
+class Solution2 {
+public:
+    double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+        size_t m = nums1.size(), n = nums2.size();
+        cout << m << endl;
+        if(m > n) return findMedianSortedArrays(nums2, nums1);
+        size_t first = 0, last = m; //二分较短的那个
+        size_t k = (m+n+1)/2;
+        size_t mid, remain;
+        while(first < last){
+            mid = first + (last - first) / 2;
+            remain = k - mid;
+            if(nums1[mid] < nums2[remain-1])
+                first = mid+1;
+            else 
+                last = mid;
+        }
+        mid = first + (last - first) / 2;   
+        remain = k - mid;
+        int c1, c2;
+        c1 = max(mid<=0? INT_MAX : nums1[mid-1],
+                 remain<=0?INT_MIN:nums2[remain-1]);
+        if( (m+n)&1) return c1;
+        c2=min( mid>=? INT_MAX : nums1[m1],
+                remain>=n2? INT_MAX : nums2[m2])
+        return 0.0;
+        
+    }
+};
+
+
+
 int main(int argc, char **argv){
     vector<int> nums1;
     vector<int> nums2 = {1};
