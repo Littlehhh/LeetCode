@@ -38,7 +38,6 @@ class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         size_t m = nums1.size(), n = nums2.size();
-        cout << m << endl;
         if(m > n) return findMedianSortedArrays(nums2, nums1);
         size_t first = 0, last = m; //二分较短的那个
         size_t median = (m+n+1)/2;
@@ -83,7 +82,7 @@ public:
                 }
             }
         }
-        cout << "Done";
+        
         return 0.0;
         
     }
@@ -94,7 +93,6 @@ class Solution2 {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         size_t m = nums1.size(), n = nums2.size();
-        cout << m << endl;
         // ensure binary search the shorter one
         if(m > n) return findMedianSortedArrays(nums2, nums1);
         size_t first = 0, last = m;
@@ -108,7 +106,6 @@ public:
             else 
                 last = mid;
         }
-        
         mid = first + (last - first) / 2;   
         remain = k - mid;
         int MaxLeft, MinRight;
@@ -118,10 +115,8 @@ public:
         MinRight = min(mid>=m?    INT_MAX : nums1[mid],
                        remain>=n? INT_MAX : nums2[remain]);
         return (MaxLeft+MinRight) * 0.5;
-        
     }
 };
-
 
 
 int main(int argc, char **argv){
