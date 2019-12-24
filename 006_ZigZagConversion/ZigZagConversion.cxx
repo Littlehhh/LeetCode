@@ -17,7 +17,7 @@ public:
                     if( flag )
                         increment = 2*(numRows-1) - i - i;
                     else
-                        increment = i + i;
+                        increment = i + i;  
                     flag = !flag;
                 ans.push_back(s[j]);
             }
