@@ -1,5 +1,6 @@
 #include<string>
-#include<climits>
+#include<climits> // for INT_MAX and INT_MIN marco
+#include<cctype>  // useful isdigit(char)
 using std::string;
 
 
