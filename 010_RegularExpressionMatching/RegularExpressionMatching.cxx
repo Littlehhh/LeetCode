@@ -3,9 +3,7 @@ using std::string;
 
 class Solution {
 public:
-    bool isMatch(string s, string p) {
-        if(s.size() && !p.size()) return false;
-        
+    bool isMatch(string s, string p) {        
         auto && it_s = s.begin();
         auto && it_p = p.begin();
         char p_prev = *it_p;
