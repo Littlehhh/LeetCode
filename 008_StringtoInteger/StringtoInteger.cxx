@@ -31,3 +31,32 @@ public:
         else return ans;
     }
 };
+
+class Solution2 {
+public:
+    int myAtoi(string str) {
+        long ans = 0;
+        bool IsNeg = false;
+        auto&& ch = str.begin();
+        // delete space
+        while(*ch == ' '){
+            ++ch;
+        }
+        if(*ch == '-' || *ch == '+'){
+            IsNeg = *ch == '-' ? true : false;
+            ++ch;
+        }
+        if(*ch > 47 && *ch < 58) {
+            while(ch!=str.end() && (*ch > 47 && *ch < 58)){
+                ans = ans * 10 + *ch - '0';
+                if( ans > INT_MAX )
+                    if(IsNeg) return INT_MIN;
+                    else return INT_MAX;
+                ++ch;
+            }
+            return IsNeg? -ans : ans ;
+        }
+        else
+            return 0;
+    }
+};
