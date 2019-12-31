@@ -1,12 +1,13 @@
 #include<vector>
 #include<string>
+#include<deque>
 using namespace std;
 
 class Solution {
 public:
     vector<string> letterCombinations(string digits) {
-        vector<string> ans;
-        if(digits.size() == 0) return ans;
+        deque<string> ans;
+        if(digits.size() == 0) return vector<string>();
         vector<string> se={" "," ","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
         for(auto && num : digits){
             string letter = se[num - '0'];
@@ -25,6 +26,6 @@ public:
                 ans.erase(ans.begin(), ans.begin()+curSize);
             }
         }
-        return ans;
+        return vector<string>(ans.begin(), ans.end()) ;
     }
 };
