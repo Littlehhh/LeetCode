@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-generate_new_note [note_name] -c [categories] 
+generate_new_note [note_name] -n [categories] 
 
 important things about nargs
 https://docs.python.org/3.6/library/argparse.html#nargs
@@ -37,6 +37,7 @@ def get_args():
                         help='solution number'
                         ) 
     args = parser.parse_args()
+    
     return args
 
 def main():

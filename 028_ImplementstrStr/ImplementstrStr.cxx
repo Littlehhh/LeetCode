@@ -1,0 +1,33 @@
+#include<string>
+#include<vector>
+using namespace std;
+
+// over time limits
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        if(needle.size() == 0) return 0;
+        if(haystack.size() == 0) return -1;
+        vector< vector<bool> > dp(haystack.size()+1, vector<bool>(needle.size()+1, false));
+        
+        for( int i = 0; i <= haystack.size(); ++i)
+            dp[i][0] = true;
+        
+        for(int i = 0; i < needle.size(); ++i ){
+            bool exist = false;
+            for (int j = 0; j < haystack.size(); ++j){
+                if( needle[i] == haystack[j] ) {
+                    dp[j+1][i+1] =  dp[j][i];
+                    exist = true;
+                }
+            }
+            if(!exist) return -1;
+        }
+        for(int i = 1; i <= haystack.size(); ++i){
+            if(dp[i][needle.size()]){
+                return i-needle.size();
+            }
+        }
+        return -1;
+    }
+};
