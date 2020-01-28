@@ -71,6 +71,7 @@
         "bit": "cpp",
         "*.tcc": "cpp",
         "memory_resource": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "set": "cpp"
     }
 }
