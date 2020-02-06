@@ -1,6 +1,10 @@
 #include<vector>
 #include<stack>
-using namespace std;
+#include <chrono> 
+#include <iostream> 
+using namespace std; 
+using namespace std::chrono;
+
 
 class Solution {
 public:
@@ -24,3 +28,33 @@ public:
         return ans;
     }
 };
+
+int main(){
+
+    int n = 1000000;
+    int i = 0;
+    auto start = high_resolution_clock::now(); 
+    i = 0;
+    for( ; i < n ; i++){
+        
+    }
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    cout << "Time taken by function: "
+         << duration.count() << " microseconds" << endl; 
+
+
+    start = high_resolution_clock::now(); 
+    i = 0;
+    while( i < n ){
+        i++;
+    }
+    stop = high_resolution_clock::now();
+    duration = duration_cast<microseconds>(stop - start); 
+    cout << "Time taken by function: "
+         << duration.count() << " microseconds" << endl; 
+    return 0; 
+}
+
+// Time taken by function: 3373 microseconds
+// Time taken by function: 2553 microseconds
