@@ -4,7 +4,7 @@ using namespace std;
 class Solution {
 public:
     int jump(vector<int>& nums) {
-        if(nums.size() == 0 && nums.size() == 1) return 0;
+        if(nums.size() == 0 || nums.size() == 1) return 0;
         int step = 0;
         int maxPos = 0;
         int end = 0;
