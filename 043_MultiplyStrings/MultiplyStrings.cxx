@@ -22,6 +22,7 @@ public:
             if(i==0 && res[i] == 0) continue;
             ans.push_back(res[i]+'0');
         }
+        delete []res ;
         return ans;
     }
 };

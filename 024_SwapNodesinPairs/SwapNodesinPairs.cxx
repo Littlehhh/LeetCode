@@ -12,7 +12,7 @@ struct ListNode {
     ListNode *next;
     ListNode(int x) : val(x), next(nullptr) {}
 };
-class Solution {
+class Solution1 {
 public:
     ListNode* swapPairs(ListNode* head) {
         if(head == nullptr || head->next == nullptr) return head;
