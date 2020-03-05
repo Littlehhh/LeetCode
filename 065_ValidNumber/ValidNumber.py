@@ -1,3 +1,5 @@
+# https://zhuanlan.zhihu.com/p/20042325
+
 class Solution:
     # @param {string} s
     # @return {boolean}
