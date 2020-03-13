@@ -2,7 +2,7 @@
 #include<unordered_map>
 
 using namespace std;
-class Solution {
+class Solution1 {
 public:
     int majorityElement(vector<int>& nums) {
         unordered_map<int, int> table;
@@ -18,5 +18,21 @@ public:
             }
         }
         return max_index;
+    }
+};
+
+// Moore voting
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {    
+        int count=0,candidate;
+        for(int n:nums)
+        {
+            if(count==0)        candidate=n;
+
+            if(n==candidate)    count++;
+            else                count--;
+        }
+        return candidate;
     }
 };
