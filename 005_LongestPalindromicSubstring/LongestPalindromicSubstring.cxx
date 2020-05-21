@@ -11,20 +11,9 @@ public:
         std::string substring;
         for( int i=0; i < len; ++i ){
             // Odd condition
-            int OddLen, lo = i,  hi = i;
-            while( lo >= 0 && hi < len && s[lo] == s[hi]){
-                --lo;++hi;
-            }
-            OddLen = hi-lo-1;
-            
+            int OddLen = getPalindromeLenByExpandCenter(s, i, i);
             // even condition
-            int EvenLen;     
-            lo = i, hi = i+1;
-            while( lo >= 0 && hi < len && s[lo] == s[hi]){
-                --lo;++hi;
-            }
-            EvenLen = hi-lo-1;   
-                
+            int EvenLen = getPalindromeLenByExpandCenter(s, i, i+1);     
             int SubLen = std::max(OddLen, EvenLen);
             if(SubLen > MaxSubLen){
                 substring = s.substr(i - (SubLen - 1) / 2 , SubLen ); 
@@ -32,5 +21,11 @@ public:
             }
         }
         return substring;
+    }
+    int getPalindromeLenByExpandCenter(string &s, int lo, int hi){
+        while( lo >= 0 && hi < s.size() && s[lo] == s[hi]){
+                --lo;++hi;
+        }
+        return hi-lo-1;
     }
 };
