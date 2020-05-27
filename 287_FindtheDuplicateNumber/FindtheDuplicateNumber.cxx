@@ -2,7 +2,7 @@
 
 using namespace std;
 
-class Solution {
+class Solution1 {
 public:
     int findDuplicate(vector<int>& nums) {
         int lo=1, hi=nums.size();
@@ -23,5 +23,26 @@ public:
         }
         return lo;
 
+    }
+};
+
+
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        int fast = 0;
+        int slow = 0;
+        while(true){
+            fast = nums[nums[fast]];
+            slow = nums[slow];
+            if(fast==slow) break;
+        }
+        slow=0;
+        while(true){
+            fast=nums[fast];
+            slow=nums[slow];
+            if(fast==slow) break;
+        }
+        return fast;
     }
 };
