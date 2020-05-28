@@ -43,7 +43,7 @@ def get_args():
 def main():
     args = get_args()
     root_dir = os.path.dirname(os.path.abspath(__file__))
-    solution_name = f'{args.number:03d}_{args.solution_name}'
+    solution_name = f'{args.number:04d}_{args.solution_name}'
     solution_path = os.path.join(root_dir, solution_name)
     cxx_name = f'{os.path.join(solution_path, args.solution_name)}.cxx'
     py_name = f'{os.path.join(solution_path, args.solution_name)}.py'
