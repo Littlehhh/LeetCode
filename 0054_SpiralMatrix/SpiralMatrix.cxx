@@ -2,7 +2,7 @@
 
 using std::vector;
 
-class Solution {
+class Solution1 {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
         vector<int> ans;
@@ -38,6 +38,46 @@ public:
             ans.push_back(matrix[row][col++]);
         }
         if(row==m-1 && col==n-1 ) ans.push_back(matrix[row][col]);
+        return ans;
+    }
+};
+
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        if (matrix.size() == 0 || matrix[0].size() == 0) {
+            return {};
+        }
+        vector<int> ans(matrix.size() * matrix[0].size());
+        int up = 0, down = matrix.size() - 1;
+        int left = 0, right = matrix[0].size() - 1;
+        int idx = 0;
+        while (true) {
+            for (int i = left; i <= right; i++) {
+                ans[idx++] = matrix[up][i];
+            }
+            if (++up > down) {
+                break;
+            }
+            for (int i = up; i <= down; i++) {
+                ans[idx++] = matrix[i][right];
+            }
+            if (--right < left) {
+                break;
+            }
+            for (int i = right; i >= left; i--) {
+                ans[idx++] = matrix[down][i];
+            }
+            if (--down < up) {
+                break;
+            }
+            for (int i = down; i >= up; i--) {
+                ans[idx++] = matrix[i][left];
+            }
+            if (++left > right) {
+                break;
+            }
+        }
         return ans;
     }
 };
