@@ -1,8 +1,9 @@
 class Solution:
     def threeSumClosest(self, nums: List[int], target: int) -> int:
         nums.sort()
-        Min = inf
-        ans = inf
+        Min = float("inf") 
+        ans = float("inf") 
+
         for i in range(len(nums)):
             lo = i+1;
             hi = len(nums)-1
