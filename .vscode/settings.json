@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/Users/hui/.pyenv/versions/3.7.2/bin/python",
+    "python.pythonPath": "/home/workshop/.pyenv/shims/python",
     "files.associations": {
         "vector": "cpp",
         "iosfwd": "cpp",
